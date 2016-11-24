@@ -7,8 +7,8 @@ DEFINITIONS AUTOMATIC TAGS ::=
 BEGIN
 
 ItsPduHeader ::= SEQUENCE {
-    protocolVersion INTEGER{currentVersion(1)} (0..255),
-    messageID INTEGER{denm(1),cam(2), poi(3), spat(4), map(5), ivi(6), ev-rsr(7)} (0..255),
+    protocolVersion INTEGER (0..255),
+    messageID INTEGER{ denm(1), cam(2), poi(3), spatem(4), mapem(5), ivim(6), ev-rsr(7), tistpgtransaction(8), srem(9), ssem(10), evcsn(11) } (0..255),  -- Mantis #7209, #7005
     stationID StationID
 }
 
@@ -167,9 +167,9 @@ HazardousLocation-ObstacleOnTheRoadSubCauseCode ::= INTEGER {unavailable(0), she
 
 HazardousLocation-AnimalOnTheRoadSubCauseCode ::= INTEGER {unavailable(0), wildAnimals(1), herdOfAnimals(2), smallAnimals(3), largeAnimals(4)} (0..255)
 
- CollisionRiskSubCauseCode ::= INTEGER {unavailable(0), longitudinalCollisionRisk(1), crossingCollisionRisk(2), lateralCollisionRisk(3), vulnerableRoadUser(4)} (0..255)
+CollisionRiskSubCauseCode ::= INTEGER {unavailable(0), longitudinalCollisionRisk(1), crossingCollisionRisk(2), lateralCollisionRisk(3), vulnerableRoadUser(4)} (0..255)
  
- SignalViolationSubCauseCode ::= INTEGER {unavailable(0), stopSignViolation(1), trafficLightViolation(2), turningRegulationViolation(3)} (0..255)
+SignalViolationSubCauseCode ::= INTEGER {unavailable(0), stopSignViolation(1), trafficLightViolation(2), turningRegulationViolation(3)} (0..255)
 
 RescueAndRecoveryWorkInProgressSubCauseCode ::= INTEGER {unavailable(0), emergencyVehicles(1), rescueHelicopterLanding(2), policeActivityOngoing(3), medicalEmergencyOngoing(4), childAbductionInProgress(5)} (0..255)
 
@@ -177,7 +177,7 @@ DangerousEndOfQueueSubCauseCode ::= INTEGER {unavailable(0), suddenEndOfQueue(1)
 
 DangerousSituationSubCauseCode ::= INTEGER {unavailable(0), emergencyElectronicBrakeEngaged(1), preCrashSystemEngaged(2), espEngaged(3), absEngaged(4), aebEngaged(5), brakeWarningEngaged(6), collisionRiskWarningEngaged(7)} (0..255)
 
-VehicleBreakdownSubCauseCode ::= INTEGER {unavailable(0), lackOfFuel (1), lackOfBatteryPower (2), engineProblem(3), transmissionProblem(4), engineCoolingProblem(5), brakingSystemProblem(6), steeringProblem(7), tyrePuncture(8)} (0..255)
+VehicleBreakdownSubCauseCode ::= INTEGER {unavailable(0), lackOfFuel (1), lackOfBatteryPower (2), engineProblem(3), transmissionProblem(4), engineCoolingProblem(5), brakingSystemProblem(6), steeringProblem(7), tyrePuncture(8), tyrePressureProblem(9)} (0..255)
 
 PostCrashSubCauseCode ::= INTEGER {unavailable(0), accidentWithoutECallTriggered (1), accidentWithECallManuallyTriggered (2), accidentWithECallAutomaticallyTriggered (3), accidentWithECallTriggeredWithoutAccessToCellularNetwork(4)} (0..255)
 
@@ -221,7 +221,7 @@ ClosedLanes ::= SEQUENCE {
 
 HardShoulderStatus ::= ENUMERATED {availableForStopping(0), closed(1), availableForDriving(2)}
 
-DrivingLaneStatus ::= BIT STRING {outermostLaneClosed(1), secondLaneFromOutsideClosed(2)} (SIZE (1..14))
+DrivingLaneStatus ::= BIT STRING (SIZE (1..15))
 
 
 PerformanceClass ::= INTEGER {unavailable(0), performanceClassA(1), performanceClassB(2)} (0..7)
@@ -435,10 +435,7 @@ YawRateConfidence ::= ENUMERATED {
     unavailable (8)
 }
 
-ProtectedZoneType::=  ENUMERATED {
-    cenDsrcTolling (0),
-    ...
-}
+ProtectedZoneType::= ENUMERATED { permanentCenDsrcTolling (0), ..., temporaryCenDsrcTolling (1) }
 
 RelevanceDistance ::= ENUMERATED {lessThan50m(0), lessThan100m(1), lessThan200m(2), lessThan500m(3), lessThan1000m(4), lessThan5km(5), lessThan10km(6), over10km(7)}
 
