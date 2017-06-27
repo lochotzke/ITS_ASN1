@@ -186,7 +186,7 @@ Curvature ::= SEQUENCE {
  curvatureConfidence CurvatureConfidence
 }
 
-CurvatureValue ::= INTEGER {straight(0), reciprocalOf1MeterRadiusToRight(-30000), reciprocalOf1MeterRadiusToLeft(30000), unavailable(30001)} (-30000..30001)
+CurvatureValue ::= INTEGER {unavailable(1023)} (0..1023) 
 
 CurvatureConfidence ::= ENUMERATED {
     onePerMeter-0-00002 (0),
@@ -221,7 +221,7 @@ ClosedLanes ::= SEQUENCE {
 
 HardShoulderStatus ::= ENUMERATED {availableForStopping(0), closed(1), availableForDriving(2)}
 
-DrivingLaneStatus ::= BIT STRING (SIZE (1..15))
+DrivingLaneStatus ::= BIT STRING (SIZE (1..13))
 
 
 PerformanceClass ::= INTEGER {unavailable(0), performanceClassA(1), performanceClassB(2)} (0..7)
