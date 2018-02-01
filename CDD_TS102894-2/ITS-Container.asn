@@ -100,7 +100,8 @@ SemiAxisLength ::= INTEGER{oneCentimeter(1), outOfRange(4094), unavailable(4095)
 
 CauseCode ::= SEQUENCE {
     causeCode CauseCodeType,
-    subCauseCode SubCauseCodeType
+    subCauseCode SubCauseCodeType,
+	...
 }
 
 CauseCodeType ::= INTEGER {
@@ -311,7 +312,8 @@ DangerousGoodsExtended ::= SEQUENCE {
     limitedQuantity BOOLEAN,
     emergencyActionCode IA5String (SIZE (1..24)) OPTIONAL,
     phoneNumber IA5String (SIZE (1..24)) OPTIONAL,
-    companyName UTF8String (SIZE (1..24)) OPTIONAL
+    companyName UTF8String (SIZE (1..24)) OPTIONAL,
+	...
 }
 
 SpecialTransportType ::= BIT STRING {heavyLoad(0), excessWidth(1), excessLength(2), excessHeight(3)} (SIZE(4))
@@ -460,7 +462,8 @@ ProtectedCommunicationZone ::= SEQUENCE {
     protectedZoneLatitude   Latitude,
     protectedZoneLongitude  Longitude,
     protectedZoneRadius ProtectedZoneRadius OPTIONAL,
-    protectedZoneID ProtectedZoneID OPTIONAL
+    protectedZoneID ProtectedZoneID OPTIONAL,
+	...
 }
 
 Traces ::= SEQUENCE SIZE(1..7) OF PathHistory
@@ -488,7 +491,8 @@ ProtectedCommunicationZonesRSU ::= SEQUENCE (SIZE(1..16)) OF ProtectedCommunicat
 CenDsrcTollingZone ::= SEQUENCE {
     protectedZoneLatitude Latitude,
     protectedZoneLongitude Longitude,
-    cenDsrcTollingZoneID CenDsrcTollingZoneID OPTIONAL
+    cenDsrcTollingZoneID CenDsrcTollingZoneID OPTIONAL,
+	...
 }
 
 ProtectedZoneRadius ::= INTEGER {oneMeter(1)} (1..255,...)
