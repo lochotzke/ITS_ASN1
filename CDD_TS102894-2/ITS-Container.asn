@@ -217,7 +217,8 @@ LanePosition::= INTEGER {offTheRoad(-1), hardShoulder(0),
 outermostDrivingLane(1), secondLaneFromOutside(2)} (-1..14)
 
 ClosedLanes ::= SEQUENCE {
-    hardShoulderStatus HardShoulderStatus OPTIONAL,
+    innerhardShoulderStatus HardShoulderStatus OPTIONAL,
+	outerhardShoulderStatus HardShoulderStatus OPTIONAL,
     drivingLaneStatus DrivingLaneStatus,
     ...
 }
