@@ -189,7 +189,7 @@ Curvature ::= SEQUENCE {
  curvatureConfidence CurvatureConfidence
 }
 
-CurvatureValue ::= INTEGER {unavailable(1023)} (0..1023) 
+CurvatureValue ::= INTEGER {straight(0),unavailable(1023)} (-1023..1023)
 
 CurvatureConfidence ::= ENUMERATED {
     onePerMeter-0-00002 (0),
@@ -312,7 +312,7 @@ DangerousGoodsExtended ::= SEQUENCE {
     tunnelsRestricted BOOLEAN,
     limitedQuantity BOOLEAN,
     emergencyActionCode IA5String (SIZE (1..24)) OPTIONAL,
-    phoneNumber IA5String (SIZE (1..24)) OPTIONAL,
+    phoneNumber PhoneNumber OPTIONAL,
     companyName UTF8String (SIZE (1..24)) OPTIONAL,
 	...
 }
