@@ -8,7 +8,7 @@ BEGIN
 
 ItsPduHeader ::= SEQUENCE {
     protocolVersion INTEGER (0..255),
-    messageID INTEGER{ denm(1), cam(2), poi(3), spatem(4), mapem(5), ivim(6), ev-rsr(7), tistpgtransaction(8), srem(9), ssem(10), evcsn(11), saem(12) } (0..255),  -- Mantis #7209, #7005
+    messageID INTEGER{ denm(1), cam(2), poi(3), spatem(4), mapem(5), ivim(6), ev-rsr(7), tistpgtransaction(8), srem(9), ssem(10), evcsn(11), saem(12), rtcmem(13) } (0..255),  -- Mantis #7209, #7005
     stationID StationID
 }
 
@@ -219,7 +219,7 @@ outermostDrivingLane(1), secondLaneFromOutside(2)} (-1..14)
 ClosedLanes ::= SEQUENCE {
     innerhardShoulderStatus HardShoulderStatus OPTIONAL,
 	outerhardShoulderStatus HardShoulderStatus OPTIONAL,
-    drivingLaneStatus DrivingLaneStatus,
+    drivingLaneStatus DrivingLaneStatus OPTIONAL,
     ...
 }
 
@@ -501,5 +501,11 @@ ProtectedZoneRadius ::= INTEGER {oneMeter(1)} (1..255,...)
 ProtectedZoneID ::= INTEGER (0.. 134217727)
 
 CenDsrcTollingZoneID ::= ProtectedZoneID
+
+DigitalMap ::= SEQUENCE (SIZE(1..256)) OF ReferencePosition 
+
+OpeningDaysHours ::= UTF8String 
+
+PhoneNumber ::= NumericString (SIZE(1..16))
 
 END
